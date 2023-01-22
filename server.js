@@ -13,15 +13,16 @@ app.use('/api', api);
 
 
 //get route for notes
-app.get('/notes', (req, res) =>
-  res.sendFile(path.join(__dirname, '/public/notes.html'))
-);
+app.get('/notes', (req, res) => {
+    console.log("should be going to notes");
+      res.sendFile(path.join(__dirname, './public/notes.html'));
+    });
 
 //get route for homepage
 app.get('*', (req, res) =>
-  res.sendFile(path.join(__dirname, '/public/index.html'))
+  res.sendFile(path.join(__dirname, './public/index.html'))
 );
 
-app.listen(PORT, () =>
-  console.log(`App listening at http://localhost:${PORT} 🚀`)
+app.listen(port, () =>
+  console.log(`App listening at http://localhost:${port} 🚀`)
 );

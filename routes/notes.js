@@ -13,12 +13,12 @@ notes.get('/', (req, res) => {
   });
 
 //get route to get a specific note
-  notes.get('/:note_id', (req, res) => {
-    const notesId = req.params.id;
+notes.get('/:note_id', (req, res) => {
+    const noteId = req.params.note_id;
     readFromFile('./db/db.json')
       .then((data) => JSON.parse(data))
       .then((json) => {
-        const result = json.filter((notes) => notes.id === notesId);
+        const result = json.filter((note) => note.note_id === noteId);
         return result.length > 0
           ? res.json(result)
           : res.json('No note with that ID');
@@ -27,18 +27,14 @@ notes.get('/', (req, res) => {
 
   //delete route for a specific note
   notes.delete('/:note_id', (req, res) => {
-    const notesId = req.params.id;
+    const noteId = req.params.note_id;
     readFromFile('./db/db.json')
       .then((data) => JSON.parse(data))
       .then((json) => {
-    
-        const result = json.filter((notes) => notes.id !== notesId);
-  
-        
-        writeToFile('./db/db.json', result);
-  
+        const result = json.filter((note) => note.note_id !== noteId);
+        writeToFile('./db/db.json', JSON.stringify(result))
         // Respond to the DELETE request
-        res.json(`Item ${notesId} has been removed 🗑️`);
+        res.json(`Item ${noteId} has been removed 🗑️`);
       });
   });
 
@@ -48,16 +44,23 @@ notes.get('/', (req, res) => {
   
     const { title, text } = req.body;
   
-    if (req.body) {
+    if (req.body && title && text) {
       const newNote = {
         title,
         text,
         note_id: uuidv4(),
       };
-  
-      readAndAppend(newNote, './db/db.json');
-      res.json(`Note added successfully 🚀`);
+
+      readFromFile('./db/db.json')
+      .then((data) => JSON.parse(data))
+      .then((json) => {
+        json.push(newNote);
+        writeToFile('./db/db.json', JSON.stringify(json))
+        res.json(`Note added successfully 🚀`);
+      });
     } else {
-      res.error('Error in adding note');
+      res.status(500).json('Error in adding note');
     }
   });
+
+  module.exports = notes;
