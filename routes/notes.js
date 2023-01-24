@@ -32,7 +32,7 @@ notes.get('/:note_id', (req, res) => {
       .then((data) => JSON.parse(data))
       .then((json) => {
         const result = json.filter((note) => note.note_id !== noteId);
-        writeToFile('./db/db.json', JSON.stringify(result))
+        writeToFile('./db/db.json', result)
         // Respond to the DELETE request
         res.json(`Item ${noteId} has been removed 🗑️`);
       });
@@ -54,8 +54,9 @@ notes.get('/:note_id', (req, res) => {
       readFromFile('./db/db.json')
       .then((data) => JSON.parse(data))
       .then((json) => {
+        console.log(json);
         json.push(newNote);
-        writeToFile('./db/db.json', JSON.stringify(json))
+        writeToFile('./db/db.json', json)
         res.json(`Note added successfully 🚀`);
       });
     } else {

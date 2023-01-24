@@ -2,7 +2,7 @@ const express = require(`express`);
 const port =process.env.PORT || 3001;
 const app = express();
 const path = require(`path`);
-const api = require("./routes/index.js");
+const api = require("./routes/notes.js");
 
 //Middleware for json 
 app.use(express.urlencoded({ extended: true }));
