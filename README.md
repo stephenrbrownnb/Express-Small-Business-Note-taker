@@ -15,8 +15,8 @@ A website for creating a todo list/notes.
 To install locally type npm install to install the required programs. This is unnecessary as the service is hosted online.  
 
 ## Usage Instructions
-The site 
-the github for this project is https://github.com/stephenrbrownnb/Readme-Generator-with-Nodejs
+The site can be found on heroku at https://afternoon-tundra-02461.herokuapp.com/
+the github for this project is https://github.com/stephenrbrownnb/Express-Small-Business-Note-taker
 ## Credit 
 This project was created by Stephen Brown , Github id: stephenrbrownnb  and email address: stephenrbrownnb@gmail.com  
 
