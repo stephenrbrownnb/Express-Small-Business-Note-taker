@@ -9,12 +9,16 @@ const {
 //get route to get all notes
 notes.get('/', (req, res) => {
     console.log(`${req.method} get request from user`);
-    readFromFile('./db/db.json').then((data) => res.json(JSON.parse(data)));
+    readFromFile('./db/db.json').then((data) => {
+      console.log(data);
+      res.json(JSON.parse(data));
+    
+})        
   });
 
 //get route to get a specific note
 notes.get('/:note_id', (req, res) => {
-    const noteId = req.params.id;
+    const noteId = req.params.note_id;
     readFromFile('./db/db.json')
       .then((data) => JSON.parse(data))
       .then((json) => {

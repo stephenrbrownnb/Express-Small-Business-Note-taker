@@ -14,8 +14,7 @@ app.use('/api', api);
 
 //get route for notes
 app.get('/notes', (req, res) => {
-    console.log("should be going to notes");
-      res.sendFile(path.join(__dirname, './public/notes.html'));
+     res.sendFile(path.join(__dirname, './public/notes.html'));
     });
 
 //get route for homepage

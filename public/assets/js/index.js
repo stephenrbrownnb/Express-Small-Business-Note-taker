@@ -1,4 +1,3 @@
-let noteTitle;
 let noteText;
 let saveNoteBtn;
 let newNoteBtn;
@@ -45,8 +44,7 @@ const saveNote = (note) =>
 const deleteNote = (id) => 
  
 fetch(`/api/${id}`, {
-  console.log(id);
-    method: 'DELETE',
+   method: 'DELETE',
     headers: {
       'Content-Type': 'application/json',
     },
@@ -183,3 +181,4 @@ if (window.location.pathname === '/notes') {
 }
 
 getAndRenderNotes();
+

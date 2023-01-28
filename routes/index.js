@@ -1,7 +1,7 @@
-const express = require(`express`);
-const notes = require("./notes.js");
-const app = express();
+//const express = require(`express`);
+//const notes = require("./notes.js");
+//const app = express();
 
-app.use(`/notes`, notes);
+//app.use(`/notes`, notes);
 
-module.exports = notes;
+//module.exports = notes;
